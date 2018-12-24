@@ -1,0 +1,44 @@
+protoc -I ../flashsale/protofile/ --grpc_out=pbfile/ --plugin=protoc-gen-grpc=/usr/local/bin/grpc_cpp_plugin ../flashsale/protofile/flashsale.proto 
+protoc -I ../flashsale/protofile/ --cpp_out=. ../flashsale/protofile/flashsale.proto
+
+protoc -I ../../protos/ —grpc_out=. —plugin=protoc-gen-grpc=grpc_cpp_plugin ../../protos/helloworld.proto
+protoc -I ../../protos/ —cpp_out=. ../../protos/helloworld.proto
+
+protoc -I ../flashsale/protofile/ --cpp_out=. ../flashsale/protofile/flashsale.proto
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o flashsale.pb.o flashsale.pb.cc
+protoc -I ../flashsale/protofile/ --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../flashsale/protofile/flashsale.proto
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o flashsale.grpc.pb.o flashsale.grpc.pb.cc
+//g++ helloworld.pb.o helloworld.grpc.pb.o greeter_client.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_client
+g++ src/flashsale.pb.o src/flashsale.grpc.pb.o src/flashsale_server.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o src/flashsale_server
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o flashsale_server.o flashsale_server.cc
+g++ flashsale.pb.o flashsale.grpc.pb.o flashsale_server.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o flashsale_server
+//g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_client.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_client
+//g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_client2.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_client2
+//g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_server.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_server
+
+
+protoc -I ../../protos --cpp_out=. ../../protos/helloworld.proto
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o helloworld.pb.o helloworld.pb.cc
+protoc -I ../../protos --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../../protos/helloworld.proto
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o helloworld.grpc.pb.o helloworld.grpc.pb.cc
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_client.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_client
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_server.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_server
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_client.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_client
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_client2.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_client2
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_server.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_server
+
+
+protoc -I ../../protos --cpp_out=. ../../protos/helloworld.proto
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o helloworld.pb.o helloworld.pb.cc
+protoc -I ../../protos --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../../protos/helloworld.proto
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o helloworld.grpc.pb.o helloworld.grpc.pb.cc
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o greeter_client.o greeter_client.cc
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_client.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_client
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o greeter_server.o greeter_server.cc
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_server.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_server
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o greeter_async_client.o greeter_async_client.cc
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_client.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_client
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o greeter_async_client2.o greeter_async_client2.cc
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_client2.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_client2
+g++ -std=c++11 `pkg-config --cflags protobuf grpc`  -c -o greeter_async_server.o greeter_async_server.cc
+g++ helloworld.pb.o helloworld.grpc.pb.o greeter_async_server.o -L/usr/local/lib `pkg-config --libs protobuf grpc++ grpc` -lgrpc++_reflection -ldl -o greeter_async_server
