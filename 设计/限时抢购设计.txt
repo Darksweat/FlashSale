@@ -1,0 +1,18 @@
+数据库设计
+id 		［int］	索引
+count	［int］	库存
+version	［int］	版本（乐观锁）
+
+后台设计
+售空标识位 isEmpty
+if(isEmpty){
+	//TODO 直接返回失败
+	return false;
+}
+读DB获取商品信息
+if(count > 0){
+	boolean result ＝ 更新DB(乐观锁)
+	return result;
+} else {
+	isEmpty = true;
+}

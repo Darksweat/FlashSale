@@ -1,0 +1,546 @@
+Last login: Mon Dec 31 00:35:12 on ttys005
+RONXU-MC2:~ ron$ mysql -u root -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 20
+Server version: 8.0.12 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| flashsale          |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| UNICERSATY_DEMO    |
+| VSTECS             |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use flashsale;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_flashsale |
++---------------------+
+| goods_info          |
+| order_info          |
+| usr_info            |
++---------------------+
+3 rows in set (0.00 sec)
+
+mysql> desc goods_info;
++--------------+------------------+------+-----+---------+-------+
+| Field        | Type             | Null | Key | Default | Extra |
++--------------+------------------+------+-----+---------+-------+
+| g_name       | varchar(20)      | NO   |     | NULL    |       |
+| g_id         | varchar(20)      | NO   | PRI | NULL    |       |
+| g_totalcount | int(10) unsigned | NO   |     | NULL    |       |
++--------------+------------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc usr_info;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| usr_name | varchar(100) | NO   | PRI | NULL    |       |
+| usr_key  | varchar(100) | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> desc order_info;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| usr_name | varchar(100) | NO   | PRI | NULL    |       |
+| usr_key  | varchar(100) | NO   |     | NULL    |       |
+| goods_id | varchar(100) | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> select * from goods_info;
++--------+------+--------------+
+| g_name | g_id | g_totalcount |
++--------+------+--------------+
+| BMW    | 10   |            0 |
++--------+------+--------------+
+1 row in set (0.00 sec)
+
+mysql> select * from usr_info;
++----------+----------------------------------+
+| usr_name | usr_key                          |
++----------+----------------------------------+
+| 1        | 6ac4aba3de9d38ef21c9b50c356085ec |
+| 10       | 629a2d48d56a9a87739d45bbc62428fe |
+| 100      | ef4ade312466d83205f81c5581d6baa9 |
+| 101      | f1e88a5cdf55bd8854800e4e0e26fa6c |
+| 102      | d5356ef637683ac74d85f65be86593e0 |
+| 103      | 6eb969c9994b8ed0002c08961a5a54b5 |
+| 104      | 25796cf7e40a1c8631b5c07c42c4f6a4 |
+| 105      | c5e3a64979e1240da51037f63127bf8d |
+| 106      | a40aa20da7d65fdee213ed471ac7a72c |
+| 107      | ab1e40fa36f0872ddbc62436328c4aa1 |
+| 108      | f710c16d3aaeacdcb6cb8f0c5286ffee |
+| 109      | b63dd9e79c6729853292f2fdc73fa2f0 |
+| 11       | 83acca4568c4445c3c9dcb0eeae2d083 |
+| 110      | d4c24f4646d7878e0ef6af982ccd5a04 |
+| 111      | 685e1ca3c6bb2562df2ccf84d5182d23 |
+| 112      | 252bdd0d28ebb118d4f449fe80c6d542 |
+| 113      | dd3b98f10274112249bbb91de3ab2cf5 |
+| 114      | 28d41695c9f104eb5e7ea2f6d5edb274 |
+| 115      | 1120e7088289c1db90044d9ed957e892 |
+| 116      | 226738c25f01072aaec5e37a6ec9276c |
+| 117      | 95896218eb8e8365fa85bae68f0996ad |
+| 118      | b4587b031456cca4c44181df5001e6f2 |
+| 119      | beb4a69d754ec6592c45d88015896630 |
+| 12       | 84cdd925c4b689c0719aa49875927998 |
+| 120      | 48e84e5d8a9e4e5aa7bc737ceb507f81 |
+| 121      | 42150ac50391a89c3ed5e5a67f88ba77 |
+| 122      | 0bf5050fd48d73d7f0ccc28002d80f7b |
+| 123      | b1b5de756adee4a8c266c8077c24db3b |
+| 124      | a59bae73c999f68f8e62933b3d61ab13 |
+| 125      | 0bee9fc91143aa03858d475d4e9cd135 |
+| 126      | 6162f2ce0c546d8f2581084f8fda3a8a |
+| 127      | 2cf0e240c1ffc61973086f54cf0b2e53 |
+| 128      | 0ed96f8a2e2ebac2da6539ab94b85a55 |
+| 129      | 2cd730756345879b7cecc8d02d5388df |
+| 13       | c50f397b17093daf35c70a44883d4dc7 |
+| 130      | 7f7db307c710b7d90da71f2e1aa5915d |
+| 131      | fb8758bdcf3f5eb4b2442cad39d92532 |
+| 132      | 2505cb66f15f8bba588f9356cbd478ee |
+| 133      | e0af4322d066f33f526d07fe03e7ff7c |
+| 134      | 4873ee96ed195b7577a8b821d285326c |
+| 135      | ed99c1ae91853729c1e376920d6a49f0 |
+| 136      | dc0cb335b3c87e579e96b9c2bb33cd05 |
+| 137      | 8b56f596e2e62361c45d7f3ff23bb9b6 |
+| 138      | db971d4182257deb2b6591e5c340aae9 |
+| 139      | b74e926226c543b6b8167822df7d0ee5 |
+| 14       | ed7f52b209590846859aeb6d618fd7aa |
+| 140      | eae961dfb262449a52fd73a8bc4375c1 |
+| 141      | 40d967255938a85d20aaf27cd3f9e67e |
+| 142      | e53d1bbecd9ec9e957f570416707c894 |
+| 143      | b4398ef819f38d57ae0553bd6a58837e |
+| 144      | b0e28ef387667160af7c07e3f86b7ea4 |
+| 145      | 1ae95b0fe0ca119fe935902795653127 |
+| 146      | 988a6197ff8bab7f498ecd9a7adef490 |
+| 147      | f01df7e1e6408574b2ece52c492e75e6 |
+| 148      | 165acefcbed7355e4fbfbb80c19f870f |
+| 149      | c725aa0a83bc927ca01f5235395f839d |
+| 15       | 863132bff66f4ce1895458e69db522cf |
+| 150      | b9baf2d359bdaf13b21a33df785ba7d0 |
+| 151      | 9670388a7c0fd75f3aa553668659d981 |
+| 152      | 20a588fb08048c5e992252e9b9ea0f53 |
+| 153      | 406ce754a0709d68f91fe950ed77b65d |
+| 154      | ad1cc9f293442620f2fdb0def6f204ca |
+| 155      | e7613d8c9664c4a2994e691021c25ddd |
+| 156      | 1e065e88e9bc459c124f677f0bff0204 |
+| 157      | 597e8dc091c6e1e747b9814fa742fe5a |
+| 158      | a33abd21d615d2c1bb6fdfe4548ac0da |
+| 159      | db99e457257c30e95a849aaf7a12b25b |
+| 16       | 2e3eaf3e844c5162b871bddbfe7bf3ce |
+| 160      | ae80e35e0cb52323685ed3cb71da8551 |
+| 161      | f77c1cde7ab0e62e06c35b8aae10041e |
+| 162      | fc58cd0430d166e8a36c3c70c5f450a9 |
+| 163      | 393d163cf69f84af2ca14fc8549be3b9 |
+| 164      | 8b1ff8ac10fa5a029507dc9810485b80 |
+| 165      | ccd39a09f2d9f018f1053efa878e15ab |
+| 166      | d59a8778a505e4a756d08a0558510e6b |
+| 167      | 30da06a9e000eb6371f48b67a6922182 |
+| 168      | c86e2fede480e087350bbaef123996c9 |
+| 169      | 6bd56f3a79533bb1f66bee5d7476a3d9 |
+| 17       | 5800add0c67f6a1cd9efa8375ef592b8 |
+| 170      | 86e2928eb513b6a64d2a524657101aea |
+| 171      | 12bbc876176d0328f9ecdb5a93fe89cf |
+| 172      | 170b2abde7e231aa3c2120268ebeda72 |
+| 173      | 79b4570d17ea7622eec8dff33f97a156 |
+| 174      | f92d04e126fa750368923958019416ad |
+| 175      | ee77225855f4494931e4309cbb9fa3e9 |
+| 176      | 42806f888000e3d9e26c9a95d3d19458 |
+| 177      | b6f33a879ba0d534504fbece6e758220 |
+| 178      | 394673769b143d2555d23cbf179dd41e |
+| 179      | 56b0705e144aeb0af9a7285bfba3e017 |
+| 18       | f1e8e0012a41b6cca11a3d518f9cf4a0 |
+| 180      | 71983f0789d3cdd934b5ef287ed4f182 |
+| 181      | 84b0dc8272e25f032d7e20aa465ac866 |
+| 182      | f6d7fe66fc3263daea4a969f4c5e084a |
+| 183      | 9079a0bd39323af1ff7c0e01fa4f6f2c |
+| 184      | 7ab28ead6e3ae2aa11c780684409bbfc |
+| 185      | 4678c8689fd415d33b4ede1fc565b0cd |
+| 186      | ab67f8bff5af0135b9c137bb82e92df9 |
+| 187      | 8b18147ab291baabe3a16de8367b2c86 |
+| 188      | 8337c4646932cd3f8c59f2335e16c7d7 |
+| 189      | 99ae6455aa55dc36f626f9d7e60f8d45 |
+| 19       | 7ddb85d198f2f4ec721db7d796579ac0 |
+| 190      | c181c0a143240853132bd9b52ba590e9 |
+| 191      | 9078f2e1fe413524d4996d59db538fb0 |
+| 192      | 637d682ec05ca73ebbe3c0be39c41495 |
+| 193      | 1a795161636d92c7162d51b93b4c9e60 |
+| 194      | 1160eabea1025b64f9da99db7d7b79b2 |
+| 195      | 01a1769771f0569a3455b6c6ddbf02bb |
+| 196      | 766c0bea7df5b1fbe20f4b214e579e5d |
+| 197      | 3bb6e26b8634e1fcf28fefc8c0dc5e2a |
+| 198      | 0fa2d42726dcf5a076c5a7c43e0e9dfe |
+| 199      | 17767fd5b4fc7e66834210e886a7665e |
+| 2        | 4693da96e14b1ffd00c61fe068f0b4ea |
+| 20       | 46b71d8c0cc94508e3351c43055b50c3 |
+| 200      | 4d0fac299e58c1e8cec73f990e04aa09 |
+| 201      | 05afe25ad267001953f08023ab3411be |
+| 202      | 83ba10d2b27461cd8635539141fd574b |
+| 203      | bfd234becba2d9b6eaf4309efe4190d8 |
+| 204      | db7a07b73a69032e81c6baa04156bcf0 |
+| 205      | 056850386bb354842bd0a36918907e06 |
+| 206      | 50716a90f95fad165582238a8651b471 |
+| 207      | e223c85600c19488cef2d8913568d759 |
+| 208      | 45a7c94542b2e0cbb7a05f6834a95e0b |
+| 209      | 4647559fcf2b28c71ee12442f861d2a7 |
+| 21       | c1c310812324d1877341142c9274431d |
+| 210      | 8bf50c23d6187203f55a64a29a85fa28 |
+| 211      | 8f1bd27458350b955255ede8380fad40 |
+| 212      | f699e8b5820bebfc35e70eb2003e8891 |
+| 213      | 1112f09d825f855b9c9a8f4ad0b07d55 |
+| 214      | c6526e09fbb87580c2e59f73df567cf6 |
+| 215      | 0c65616eca14de76ab6f7f3e06823fca |
+| 216      | 7b95bf46a3cbec56dfdd91dc0f7b1826 |
+| 217      | d0eea72260729446dec019ef7fdbfe64 |
+| 218      | 5b3317d4d577287254a7b98335e3f422 |
+| 219      | 769c90e98e0224892593752bd0a0d62b |
+| 22       | 1670a26e058106c7796098f1ce603802 |
+| 220      | 7063d396e008c29de9dcc1d3581dd735 |
+| 221      | 52620fddaa384c1b2176d8097ca9db0e |
+| 222      | 9c29dd7a82a0316c3ab27b52e90dd346 |
+| 223      | d96600974a163ec98f072a110bf7cfac |
+| 224      | ffe2f42c50b6771f21a433384a73ee81 |
+| 225      | 17780742e67a1a12ff3d7a7f4eb439af |
+| 226      | 5e12804e9e90d841f01c82815b7256af |
+| 227      | 03653b245155056ff8a4fe8b9a35d7a1 |
+| 228      | 3171ac28f84921fdbf1ef689d1ebca01 |
+| 229      | 917e0ed48db5278e8506dee5c63d7a1f |
+| 23       | 447014bc6a72efcf13319f30627b7774 |
+| 230      | fa7a964e49a8d329f2f2ec91dddcf9c9 |
+| 231      | 45b22a3398705137de1b7f8f0fd984f7 |
+| 232      | 621d937bc2863d9a954b3d82fa5f4567 |
+| 233      | fe6a7978fc62a7a619d2dd10f50f0868 |
+| 234      | 9d8679dde89535c9162994ed35c36d0a |
+| 235      | 9adc0dbd78370f12c1a059c3764491ac |
+| 236      | 7ed0bca1d2f4fe57e838d1cf1412e396 |
+| 237      | 45a8a2ee29237ad6fcf5eb42f31ca045 |
+| 238      | 287208184f7d81e24ea3d84a9c015922 |
+| 239      | 11deea64effe0dc8bcd7711f70fea459 |
+| 24       | 988c6f7bb968f14cd728ed0c994bf7dc |
+| 240      | b9717390ac11255bdae35a1c822bac92 |
+| 241      | 413966441a63022a3825893b09bea084 |
+| 242      | e58d474a1d0606320e035e13ebdb8d00 |
+| 243      | 7e1e2c7a72b197c6f23b2bf2fcdb559c |
+| 244      | bc8f10e5965a075589a01d1e543a5881 |
+| 245      | c132772e32cb53f93933dcb2791d5044 |
+| 246      | 0cce7514483a696b000dcd02358034cf |
+| 247      | aaed81857813e09ab2a69ed7c6cbb41d |
+| 248      | eb4b2539b45f653bcb6d4ecb283b392c |
+| 249      | 2b68b084dbd2ccff88b5ee107d16561a |
+| 25       | c65fe20d2ed894f1594b714fd16025e6 |
+| 250      | cb0c019569e3f096dc63ebee7aab3003 |
+| 251      | a63a98fc5faf98bd4d06a7a97cb27ae7 |
+| 252      | 4200ea60174c261fcdfe4820da93f49e |
+| 253      | 45dc505dc6bb9e40f89c4e027d549f0a |
+| 254      | cfb3449459a0e2c262aa90c6bad4fef8 |
+| 255      | d852d959c12fed534c5bd827483212b3 |
+| 256      | 4ddcae696065643cd1016d36a3388cea |
+| 257      | 63b6759205d5f05e3df38f288a0ae469 |
+| 258      | 6a50ac0a54b45f07d1e7d69eba7218e5 |
+| 259      | 592243037cecb784cfb70ce873c65a2e |
+| 26       | 879e0e1d67016eefb8b98332cf240d53 |
+| 260      | c7b4134547f8659481656f20fcefe128 |
+| 261      | f78bd67230c4dad5e9e3928ee79870d9 |
+| 262      | 0deb0c85e2e8df556cfa8a250f315af2 |
+| 263      | e50afe44071f329d312f546d16e4171d |
+| 264      | 7e117435ab5427f097e174a99abf1680 |
+| 265      | 4be2580ea9d1544c098aca031073b858 |
+| 266      | 07be66a957dde2df47b9a295065ad11b |
+| 267      | b242cba7d07620755460a99d2bb06142 |
+| 268      | 059644da554ad90bfdf89e6212e156d8 |
+| 269      | 6d94ddb4b8f025ec88711934c850300a |
+| 27       | 739795427889d73ef76c592c58313b9c |
+| 270      | 268cfe39b3c74425fc909c8a7cec0e62 |
+| 271      | cca40e0a29c1cd3e6c2276fbcd5aa7e8 |
+| 272      | b5ec46ee68e1d68d52517c34bcf0d015 |
+| 273      | 3eb1cc2503a3ba8aa3c711ae9733cf59 |
+| 274      | d182f3a94c48de0f690582e75915042f |
+| 275      | 553e334535f888a9373d76c55b54245b |
+| 276      | 3fe634930fa485d3a8fdb4b638dfc63a |
+| 277      | d20559a41e6cb919a4c21ac0cae75c96 |
+| 278      | 90f19c60c5dcd0a968341732890c7a33 |
+| 279      | 34382a61e68ade1c294ea887fe8066d8 |
+| 28       | 882bd43c02db908f3b5591631c7bcc1b |
+| 280      | 3cd3e7c3e4f9848cff6346b7655cedcb |
+| 281      | f81f6ebae68a4548582981f755cdbb2c |
+| 282      | ba17c5b1697e4b7955acc5617d842b60 |
+| 283      | 3082d5b3a8975b4da1ccf4dfbbb076a1 |
+| 284      | 540b130271aa7f0606dbb73ef992b8ed |
+| 285      | 75b0646e23069c54d160edd8d444db4f |
+| 286      | 5265989c336cf17cca9615612fb82110 |
+| 287      | 54accf93fb90ba83f1f1e8c4c07086be |
+| 288      | 9c6103313af0720b7c3028e69f121f40 |
+| 289      | 6e326ed7315f9469799674a21e277050 |
+| 29       | 855ae4b8c09a2da4118af31e7def8f5e |
+| 290      | 6950919e3d355df450071674bf83dad8 |
+| 291      | e1b3f868bd0070880b0a6ba32424a170 |
+| 292      | df6566d7b19156386d09ee8afe5c09d8 |
+| 293      | e4f8fab11b3178b33507f8a42042ac67 |
+| 294      | c274737d1cec6ad943aff81fb8bcc55e |
+| 295      | c45d3a49d1a7f60fecfb69be68240ef7 |
+| 296      | ddaf75c73e9e2a144bec44d5e6360bd3 |
+| 297      | 2159e5fb6bf11516ce3abf7f9873c9c0 |
+| 298      | 1c55ed4d17d51d4cfdb3267a7eb641ea |
+| 299      | 5101cd6de0f6b540df5131f3ef877d28 |
+| 3        | bf3cdd9d8621f487f6d4f5c318e56031 |
+| 30       | 7ad1b29e69e2bc4deb452a19f6999c60 |
+| 300      | 3ddf4539b00a5b08cf75a4373a58c057 |
+| 301      | d274f2556d656ae5b4b19fe9e90e8819 |
+| 302      | 8fa27ac31270ec03d56cc86988f8d61a |
+| 303      | c0190562341d11df6f3349cae3a8260f |
+| 304      | b02fb472418acb000c9f0b80c0cc94b1 |
+| 305      | a237ccf93f01a81c0cf0f669fd34034d |
+| 306      | d1e002a48c42af9bb57f817e6625122d |
+| 307      | d91e964e22e667cd492ee3133d6caa3f |
+| 308      | 8872bcf92d84142082b9ae03db80725c |
+| 309      | be7d9a57ac8111f88f343da182427347 |
+| 31       | cfe793748f1fbf0f63c6d9d0bafec1d9 |
+| 310      | a1dd7908a420807323d6ebeb1a7d46ed |
+| 311      | 84fd2575325b5bc654bbf92a707cfc54 |
+| 312      | 95ce6a6d265815af7219d717e0348b68 |
+| 313      | 7c1af0820766894948872c7f4ce8f972 |
+| 314      | 83d411201f6c59071d0b0d0b93c173ea |
+| 315      | 829b0b26eb85459f8c4d48caea2a28bf |
+| 316      | 0b3092d683bad098866279f24b84f0d5 |
+| 317      | dab4fb435b0aaef220a6a4cd485a176d |
+| 318      | e0bc548639b0dd1fe7f40960804e1251 |
+| 319      | 2206acf35f876f272a66cb0bb8d91304 |
+| 32       | a0c8d8729848660c12fdf5ae517b1867 |
+| 320      | 9816294c9257b2b81052cab9793eb3b4 |
+| 321      | ff42a933ac3c799cf1e68576a07268a3 |
+| 322      | 01013107e42a8dfa701aaf05068ef12c |
+| 323      | d92e6f483e27bfbba28628dd4be09eab |
+| 324      | 10b0755b164006668c07638b1911f7aa |
+| 325      | 2b4abd5a44791f976910b4442a5e6c6a |
+| 326      | 11928da9389108916e965571bad00688 |
+| 327      | c50c3a1d650adff0bf2a59ca6a79d2b4 |
+| 328      | c2c55f761805507dbc6e8380c9bc0370 |
+| 329      | c5fce4cfa3aa2c5d84e72d0dfd5e8322 |
+| 33       | 4595bdf8a59a1c65bb0634b31d68de35 |
+| 330      | c3703edc2e0e1d3255134b37eaed27e4 |
+| 331      | c1dbbf2594a81caed5f7f2af65571563 |
+| 332      | 010d5acaf79c890ce9dbb74c76f95562 |
+| 333      | 288aef0f5b6389b348af7948b81ac9f2 |
+| 334      | d23026b6bcb60a17964385b58f5ebce8 |
+| 335      | b01fed1fbec4ad5815270fc1a9c17ce3 |
+| 336      | 73acb69a71ef516fe9602958ea240c5d |
+| 337      | b9565b61b8f0094f050ee8bd607e1615 |
+| 338      | ebdbc423ca7d98a04477d8e7df778a6c |
+| 339      | afec86d6963b786d3bbb287674fbd3d1 |
+| 34       | 5d26bdeab2bd73dd8465ae603a37229f |
+| 340      | 61db2fa9c1d473890951c32b14d165b4 |
+| 341      | 993ffdc501b1860c1567b0f61b77e5c0 |
+| 342      | 8648290b4536f758c791ce0935bf1339 |
+| 343      | 598b1a894b7af15cefc6d3c447620728 |
+| 344      | a86eebf4d6495229fe2543c96074d4be |
+| 345      | e0f35cc086b70f318f47bffffef40e11 |
+| 346      | 16347fa04e9f8416c650250ec7a51ab2 |
+| 347      | a19fc7cdd7d9b7bb952aed9f8d6cb290 |
+| 348      | c36e7dab6f4daee0c464e7a88ff58823 |
+| 349      | 3408f5cd5b8e537b865e167084237763 |
+| 35       | 39454a31360a459037e208bc76876dbc |
+| 350      | 2d28f47ef69cdcefede8edb037504480 |
+| 351      | 4c2aa5b7c256f3b96c2d7109abd6e172 |
+| 352      | eb8b62362b5e841e755719bd6f9edbdd |
+| 353      | d4bb346c659f5cd51e64e68d99d8454e |
+| 354      | d069dd243e6271f6b34f94e0c11f606e |
+| 355      | 56dd712b573d0148f93c0372973729d9 |
+| 356      | 6fa1854213dd63a19c5e0f60efe93cf8 |
+| 357      | 6a726ed4f87628be7d20162491d4fa48 |
+| 358      | be3d1a0c3659d0b26d3ae3fa24512f4a |
+| 359      | 956ab6a05906d82ab541ac9931e3aa86 |
+| 36       | fce306a68afc3172c2efebdd0a8a54a0 |
+| 360      | 1b464faa4bbcc7d77afc6398eccefc4f |
+| 361      | 04201e8143fe94d40e4fa3db3ad99588 |
+| 362      | 9676f961fbcb7381487d112d955e18ee |
+| 363      | c8ee2de610a6c45eb48235eb3e65a448 |
+| 364      | 0dcc3913d4297548ac7d9264daab597e |
+| 365      | 195cee6bc1c8bfdb6ab08758349f9eac |
+| 366      | b5df83befcb719cee7fced59a7ecf067 |
+| 367      | bf10febd571f73cecb0f703313a25211 |
+| 368      | af945038c482490d73837a1b32f62965 |
+| 369      | 8ee192c10e1f402ee844e7dd08a8c506 |
+| 37       | 5880ade444b1ec58d374be18df2a092d |
+| 370      | 50d32d9c58b2b169eb335b1c1d779ee2 |
+| 371      | 88221e86b4adefd6c2deb1e665a01630 |
+| 372      | c5b7c12efcd7806f1a4f373aa453944e |
+| 373      | 52799d44bed647640ad818f07dde4663 |
+| 374      | 8bdd22aa0c02c6f8f6c4bdd3fe52beaf |
+| 375      | ef65fa37865138891261acb21e5b1ba1 |
+| 376      | 1cffaeccbae9201649ef58d8faf2f94e |
+| 377      | b701db0fd28460fe13fb0f476af04200 |
+| 378      | 8db67483eb4b4e9c0a0b170fee4e171e |
+| 379      | 9cc3c789b0b847d1822e03688da3ea3c |
+| 38       | 00b6edb4db48081f8257c148d1a5bb11 |
+| 380      | ececd8cffa4a88124250d88d01997955 |
+| 381      | 19fb5a50f21a69a735d952accd30268b |
+| 382      | eb707871a85b987061b38391b8311db1 |
+| 383      | 71ce6dc998d921ff84db1390b346dac6 |
+| 384      | f74b2a1811cf95bd2998673249cb680b |
+| 385      | 86373a65d0ca3c3640bbbb962301f0e5 |
+| 386      | 39d7e2f19a385d6b28098a18091c02ee |
+| 387      | 9bef9d5d67ce20ead42af14f1ea69f4e |
+| 388      | 87fbef1983cff9e841ba98ad5cab2fcd |
+| 389      | 0d748c158713c056dc72ee71028047c5 |
+| 39       | 93371556b0041125e2cd44a302d98fff |
+| 390      | 2695c93a23158722f297fa4a88fac311 |
+| 391      | 76e468b2520fdc153b2cf036863d51ff |
+| 392      | 8b3b15bdbb868cda862e35759b19d0fd |
+| 393      | 0a2abab8dcc52bb571bcf275c5b6585a |
+| 394      | 0ff8b640be78c892ab73a7996512fc18 |
+| 395      | 50cbb7db76a05ddf7fd469706698f824 |
+| 396      | e1071ea8ed0a4d3e13f262eca5da9ff3 |
+| 397      | 18dbcb83bd33540e51c1faf92de4ac3b |
+| 398      | ba29665f819616620ad07d9fb0ee0ec4 |
+| 399      | 8611e9fd9bdc34f28e85747ea1b92821 |
+| 4        | 084f68dfde306754c934ed7123339be3 |
+| 40       | 20ef8a6c5bef6a9115bdd00d73994abc |
+| 400      | 1301e25f89eddddfa5c7d8623fae6f13 |
+| 41       | d55a3f10c3bff2ff4a26d47be2c1c95c |
+| 42       | 874c77aa04ba5e4834a4485bc506a531 |
+| 43       | c424ff28995fd8a1fd4f7e1142e971d1 |
+| 44       | d9b2c7c622301c466a60dec3786be404 |
+| 45       | 18399a91ace79070cd5f8e48aec5a4b8 |
+| 46       | 13cd8b099c26d494ae2f89b8ff58c830 |
+| 47       | 84aca2301138e019c9751bb0eafeb6f5 |
+| 48       | 5993357fe32385ceb51a7312a6c42da3 |
+| 49       | 1b352e0b703ae3c1ebd325477943858e |
+| 5        | d80aeaa8d1811cc1879382d27af286a9 |
+| 50       | a396ed2d0e3e9a615980e9f8be65860f |
+| 51       | 9ecf1940dced10a92d97a9e09b2a6675 |
+| 52       | f0dc62bd892759883219248630cb912f |
+| 53       | a7c091bf747bd216fa72ca776b8528c3 |
+| 54       | 824e8a81da254fc7d6d003cc500ae47f |
+| 55       | f112303f612ab96f18c93a170b5ed91e |
+| 56       | 2a82b6c2fa551131fb5c8f92a0411287 |
+| 57       | 9d4b27b924ea7486f595d41e76e8907a |
+| 58       | 0ed62416381e97605ca1125601d647e7 |
+| 59       | b65dbedc6e932c843d3dff3d743ce133 |
+| 6        | 056715b0334751af3d740c9dbcf051c8 |
+| 60       | 3c040bdacbed2674d968184c55041825 |
+| 61       | 833422171f4a8abb7a5b5b9041aa0796 |
+| 62       | bb85cbff37e09b281f4474ad672f23f7 |
+| 63       | 1934fca4807d0f73b401594814b34e1b |
+| 64       | de6f1dde2c587580575c12772d75e277 |
+| 65       | 44a05436f2bb7b3794609fa4529fc6ec |
+| 66       | aa82c2eb3965d878368053ad4c8196e5 |
+| 67       | d2c7b450c4633cc297c88b914322920c |
+| 68       | 0b6cbcbea10811a7f1a44b8aae1e3ec8 |
+| 69       | b8c8e4642632301639c6267087207708 |
+| 7        | 83103221c9bdc377781d79688e81d39e |
+| 70       | 52701225792842d846209d81e541bcdd |
+| 71       | c952979c1dc583dc96766f7e54596f22 |
+| 72       | b2ae69d4d0ec021803b09bfaa5211542 |
+| 73       | 95df1669b907b84389d57f9028352e01 |
+| 74       | fa5a50d6789949d03b85cb83a2f8d2a8 |
+| 75       | 82a38e71418ce8590f770bdd953f0e2e |
+| 76       | e86be15329634d2047741cc7da913de0 |
+| 77       | a6eece32e713cc89418923499ae82710 |
+| 78       | 3e7f6c05ab18963b03514b47ca601490 |
+| 79       | 1faeb45c66c7d330aebb540c1ce531ba |
+| 8        | 5a978b7b423fe3cd9166e36b021a4533 |
+| 80       | d36cd5641477124436b50669a06da7d6 |
+| 81       | 5c516166fae732dfed40c386d6c0b926 |
+| 82       | 426ef9256c74b8ca332d6f58678594cd |
+| 83       | cad53187dabd27d9869e6da9d761bd48 |
+| 84       | f154622b3ed2dab8dfd89f39953c505d |
+| 85       | 8cbc191b3de9db6ee2c3075d5073742c |
+| 86       | 8adfc4151bc8d8a306322be9a1b8629c |
+| 87       | b291b7aeeb547385e0940b3620bc7011 |
+| 88       | a8a4543bbebf6449dafbfa549cbec8a8 |
+| 89       | cac51968d520a60d5a53c98bc9c1c4da |
+| 9        | 32790a5c6983947571d44e67197d0b92 |
+| 90       | 5875e6b3b3aeb194b09f9fb9bb2135fa |
+| 91       | bfe93e16a9e91c40e5fbaf106678d111 |
+| 92       | 050545cf16d3dfc5f90baf96530c860a |
+| 93       | 720049be677c014f5d2ef6262d5b3153 |
+| 94       | 6383b38f95491d91545654b92413415f |
+| 95       | 3452d353dce9f537a4c645fb55a27deb |
+| 96       | 08fa949e5174cf6ba152241f7c43266a |
+| 97       | d3679d827e3600d53586104b19d76d45 |
+| 98       | 59b13ebeab56b45e3dc884b25c0d5f06 |
+| 99       | 761f150e02ef6f388cb3a2d1a6a5b7d7 |
++----------+----------------------------------+
+400 rows in set (0.00 sec)
+
+mysql> select * from order_info;
++----------+----------------------------------+----------+
+| usr_name | usr_key                          | goods_id |
++----------+----------------------------------+----------+
+| 10       | 629a2d48d56a9a87739d45bbc62428fe | 10       |
+| 105      | c5e3a64979e1240da51037f63127bf8d | 10       |
+| 113      | dd3b98f10274112249bbb91de3ab2cf5 | 10       |
+| 130      | 7f7db307c710b7d90da71f2e1aa5915d | 10       |
+| 136      | dc0cb335b3c87e579e96b9c2bb33cd05 | 10       |
+| 143      | b4398ef819f38d57ae0553bd6a58837e | 10       |
+| 154      | ad1cc9f293442620f2fdb0def6f204ca | 10       |
+| 163      | 393d163cf69f84af2ca14fc8549be3b9 | 10       |
+| 171      | 12bbc876176d0328f9ecdb5a93fe89cf | 10       |
+| 177      | b6f33a879ba0d534504fbece6e758220 | 10       |
+| 180      | 71983f0789d3cdd934b5ef287ed4f182 | 10       |
+| 187      | 8b18147ab291baabe3a16de8367b2c86 | 10       |
+| 190      | c181c0a143240853132bd9b52ba590e9 | 10       |
+| 204      | db7a07b73a69032e81c6baa04156bcf0 | 10       |
+| 208      | 45a7c94542b2e0cbb7a05f6834a95e0b | 10       |
+| 214      | c6526e09fbb87580c2e59f73df567cf6 | 10       |
+| 217      | d0eea72260729446dec019ef7fdbfe64 | 10       |
+| 228      | 3171ac28f84921fdbf1ef689d1ebca01 | 10       |
+| 232      | 621d937bc2863d9a954b3d82fa5f4567 | 10       |
+| 235      | 9adc0dbd78370f12c1a059c3764491ac | 10       |
+| 236      | 7ed0bca1d2f4fe57e838d1cf1412e396 | 10       |
+| 242      | e58d474a1d0606320e035e13ebdb8d00 | 10       |
+| 248      | eb4b2539b45f653bcb6d4ecb283b392c | 10       |
+| 25       | c65fe20d2ed894f1594b714fd16025e6 | 10       |
+| 253      | 45dc505dc6bb9e40f89c4e027d549f0a | 10       |
+| 255      | d852d959c12fed534c5bd827483212b3 | 10       |
+| 257      | 63b6759205d5f05e3df38f288a0ae469 | 10       |
+| 258      | 6a50ac0a54b45f07d1e7d69eba7218e5 | 10       |
+| 266      | 07be66a957dde2df47b9a295065ad11b | 10       |
+| 270      | 268cfe39b3c74425fc909c8a7cec0e62 | 10       |
+| 273      | 3eb1cc2503a3ba8aa3c711ae9733cf59 | 10       |
+| 274      | d182f3a94c48de0f690582e75915042f | 10       |
+| 276      | 3fe634930fa485d3a8fdb4b638dfc63a | 10       |
+| 280      | 3cd3e7c3e4f9848cff6346b7655cedcb | 10       |
+| 287      | 54accf93fb90ba83f1f1e8c4c07086be | 10       |
+| 290      | 6950919e3d355df450071674bf83dad8 | 10       |
+| 295      | c45d3a49d1a7f60fecfb69be68240ef7 | 10       |
+| 299      | 5101cd6de0f6b540df5131f3ef877d28 | 10       |
+| 308      | 8872bcf92d84142082b9ae03db80725c | 10       |
+| 309      | be7d9a57ac8111f88f343da182427347 | 10       |
+| 315      | 829b0b26eb85459f8c4d48caea2a28bf | 10       |
+| 316      | 0b3092d683bad098866279f24b84f0d5 | 10       |
+| 318      | e0bc548639b0dd1fe7f40960804e1251 | 10       |
+| 321      | ff42a933ac3c799cf1e68576a07268a3 | 10       |
+| 38       | 00b6edb4db48081f8257c148d1a5bb11 | 10       |
+| 50       | a396ed2d0e3e9a615980e9f8be65860f | 10       |
+| 55       | f112303f612ab96f18c93a170b5ed91e | 10       |
+| 7        | 83103221c9bdc377781d79688e81d39e | 10       |
+| 89       | cac51968d520a60d5a53c98bc9c1c4da | 10       |
+| 95       | 3452d353dce9f537a4c645fb55a27deb | 10       |
++----------+----------------------------------+----------+
+50 rows in set (0.00 sec)
+
+mysql> 
