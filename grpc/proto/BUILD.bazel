@@ -1,0 +1,19 @@
+proto_library(
+    name = "flashsale_proto",
+    srcs = [
+        "flashsale.proto",
+    ],
+    visibility = [
+        "//visibility:public",
+    ],
+)
+
+proto_library(
+    name = "seckill_proto",
+    srcs = [
+        "seckill.proto",
+    ],
+    visibility = [
+        "//visibility:public",
+    ],
+)
